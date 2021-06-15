@@ -8,22 +8,22 @@ import javax.persistence.Table;
 public class Marca {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int codigo;
 	@Column
-	private String nombre;
+	private String descripcion;
 	@Column
 	private String fecha;
-	public int getId() {
-		return id;
+	public int getCodigo() {
+		return codigo;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
-	public String getNombre() {
-		return nombre;
+	public String getDescripcion() {
+		return descripcion;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	public String getFecha() {
 		return fecha;

@@ -1,15 +1,18 @@
 package com.empresa.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="celular")
-public class Celular {
+public class Celular implements Serializable{
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private int id_celular;
@@ -17,8 +20,9 @@ private int id_celular;
 private String nombre;
 @Column  
 private String precio;
-@Column
-private String marca;
+@ManyToOne
+@JoinColumn(name="cod_mar")
+private Marca marca;
 @Column
 private String stock;
 
@@ -40,10 +44,10 @@ public String getPrecio() {
 public void setPrecio(String precio) {
 	this.precio = precio;
 }
-public String getMarca() {
+public Marca getMarca() {
 	return marca;
 }
-public void setMarca(String marca) {
+public void setMarca(Marca marca) {
 	this.marca = marca;
 }
 public String getStock() {

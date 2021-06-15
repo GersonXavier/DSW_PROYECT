@@ -24,7 +24,7 @@ public class MarcaController {
 	@Autowired
 	private MarcaRepository marcaRepositorio;
 	
-	@GetMapping
+	@GetMapping("/lista")
 	public ResponseEntity<List<Marca>> ListaMarca(){
 		
 		List<Marca> ListarMarca = marcaRepositorio.findAll();
@@ -64,12 +64,12 @@ public class MarcaController {
 	@PutMapping
 	public ResponseEntity<Marca> editarMarca(@RequestBody Marca marca){
 		
-		Optional<Marca> optMarca = marcaRepositorio.findById(marca.getId());
+		Optional<Marca> optMarca = marcaRepositorio.findById(marca.getCodigo());
 		
 		if(optMarca.isPresent()) {
 			
 			Marca updateMarca = optMarca.get();
-			updateMarca.setNombre(marca.getNombre());
+			updateMarca.setDescripcion(marca.getDescripcion());
 			updateMarca.setFecha(marca.getFecha());
 			marcaRepositorio.save(updateMarca);
 			return ResponseEntity.ok(updateMarca);
