@@ -1,7 +1,11 @@
 package com.empresa.entity;
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="marca")
@@ -13,6 +17,9 @@ public class Marca {
 	private String descripcion;
 	@Column
 	private String fecha;
+	@JsonIgnore
+	@OneToMany(mappedBy = "marca")
+	private List<Celular> listaCelular;
 	public int getCodigo() {
 		return codigo;
 	}

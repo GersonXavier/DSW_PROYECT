@@ -60,6 +60,7 @@ public ResponseEntity<Celular> editarCelular(@RequestBody Celular celular)
 Optional<Celular> optCelular = celularRepositorio.findById(celular.getId_celular());	
 if(optCelular.isPresent()) {
    Celular updateCelular = optCelular.get();
+   updateCelular.setId_celular(celular.getId_celular());
    updateCelular.setNombre(celular.getNombre());
    updateCelular.setPrecio(celular.getPrecio());
    updateCelular.setMarca(celular.getMarca());
