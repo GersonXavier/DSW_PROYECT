@@ -1,29 +1,36 @@
 package com.empresa.entity;
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="marca")
 public class Marca {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int codigo;
 	@Column
-	private String nombre;
+	private String descripcion;
 	@Column
 	private String fecha;
-	public int getId() {
-		return id;
+	@JsonIgnore
+	@OneToMany(mappedBy = "marca")
+	private List<Celular> listaCelular;
+	public int getCodigo() {
+		return codigo;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
-	public String getNombre() {
-		return nombre;
+	public String getDescripcion() {
+		return descripcion;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	public String getFecha() {
 		return fecha;

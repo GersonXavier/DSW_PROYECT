@@ -23,13 +23,13 @@ public class CelularController {
 @Autowired
 private CelularRepository celularRepositorio;
 
-@GetMapping
+@GetMapping("/lista")
 public ResponseEntity<List<Celular>> ListaCelular(){
 	List<Celular> ListarCelular = celularRepositorio.findAll();
 	return ResponseEntity.ok(ListarCelular);
 }
 
-@GetMapping("{id}")
+@GetMapping("/buscar/{id}")
 public ResponseEntity<Celular> BuscarPorID(@PathVariable("id") int id_celular)
 {
 Optional<Celular> optional = celularRepositorio.findById(id_celular);
@@ -40,26 +40,27 @@ if(optional.isPresent()) {
 
 }
 
-@PostMapping
+@PostMapping("/registrar")
 public ResponseEntity<Celular> CrearCelular(@RequestBody Celular celular)
 {
 Celular newCelular = celularRepositorio.save(celular);
 return ResponseEntity.ok(newCelular);
 }
 
-@DeleteMapping("{id}")
+@DeleteMapping("/eliminar/{id}")
 public ResponseEntity<Void> EliminarCelular(@PathVariable("id") int id_celular)
 {
 celularRepositorio.deleteById(id_celular);	
 return ResponseEntity.ok(null);
 }
 
-@PutMapping
+@PutMapping("/actualizar")
 public ResponseEntity<Celular> editarCelular(@RequestBody Celular celular)
 {
 Optional<Celular> optCelular = celularRepositorio.findById(celular.getId_celular());	
 if(optCelular.isPresent()) {
    Celular updateCelular = optCelular.get();
+   updateCelular.setId_celular(celular.getId_celular());
    updateCelular.setNombre(celular.getNombre());
    updateCelular.setPrecio(celular.getPrecio());
    updateCelular.setMarca(celular.getMarca());
