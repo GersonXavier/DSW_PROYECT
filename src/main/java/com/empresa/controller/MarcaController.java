@@ -32,7 +32,7 @@ public class MarcaController {
 		return ResponseEntity.ok(ListarMarca);
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("/buscar/{id}")
 	public ResponseEntity<Marca> BuscarPorId(@PathVariable("id") int id){
 		Optional<Marca> optional = marcaRepositorio.findById(id);
 		
@@ -45,7 +45,7 @@ public class MarcaController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@PostMapping
+	@PostMapping("/registrar")
 	public ResponseEntity<Marca> CrearMarca(@RequestBody Marca marca){
 		Marca newMarca = marcaRepositorio.save(marca);
 		
@@ -53,7 +53,7 @@ public class MarcaController {
 		
 	}
 	
-	@DeleteMapping("{id}")
+	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<Void> EliminarMarca(@PathVariable("id") int id){
 		
 		marcaRepositorio.deleteById(id);
@@ -61,7 +61,7 @@ public class MarcaController {
 		return ResponseEntity.ok(null);
 	}
 	
-	@PutMapping
+	@PutMapping("/actualizar")
 	public ResponseEntity<Marca> editarMarca(@RequestBody Marca marca){
 		
 		Optional<Marca> optMarca = marcaRepositorio.findById(marca.getCodigo());

@@ -30,7 +30,7 @@ public class UsuarioController {
 		return ResponseEntity.ok(ListarUsuario);
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("/buscar/{id}")
 	public ResponseEntity<Usuario> BuscarPorID(@PathVariable("id") int id_usuario)
 	{
 		Optional<Usuario> optional = usuarioRepositorio.findById(id_usuario);
@@ -41,7 +41,7 @@ public class UsuarioController {
 		
 	}
 	
-    @PostMapping
+    @PostMapping("/registrar")
     public ResponseEntity<Usuario> CrearUsuario(@RequestBody Usuario usuario)
     {
     
@@ -49,14 +49,14 @@ public class UsuarioController {
     	return ResponseEntity.ok(newUsuario);
     }
 	
-	@DeleteMapping("{id}")
+	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<Void> EliminarUsuario(@PathVariable("id") int id_usuario)
 	{
 	usuarioRepositorio.deleteById(id_usuario);	
 	return ResponseEntity.ok(null);
 	}
 
-	@PutMapping
+	@PutMapping("/actualizar")
 	public ResponseEntity<Usuario> editarUsuario(@RequestBody Usuario usuario)
 	{
 	Optional<Usuario> optUsuario = usuarioRepositorio.findById(usuario.getId_usuario());	
@@ -68,6 +68,7 @@ public class UsuarioController {
 		updateUsuario.setDirec_usuario(usuario.getDirec_usuario());
 		updateUsuario.setCorreo_usuario(usuario.getCorreo_usuario());
 		updateUsuario.setNum_usuario(usuario.getNum_usuario());
+		updateUsuario.setTipo_usuario(usuario.getTipo_usuario());
 		usuarioRepositorio.save(updateUsuario);
 		return ResponseEntity.ok(updateUsuario);
 	}else{
