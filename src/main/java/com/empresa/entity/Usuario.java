@@ -14,6 +14,8 @@ public class Usuario {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private int id_usuario;
 @Column
+private String user;
+@Column
 private String nom_usuario;
 @Column
 private String ape_usuario;
@@ -25,10 +27,13 @@ private String correo_usuario;
 private String num_usuario;
 @Column
 private String tipo_usuario;
+@Column
+private String contraseña;
 
 public int getId_usuario() {
 	return id_usuario;
 }
+
 public void setId_usuario(int id_usuario) {
 	this.id_usuario = id_usuario;
 }
@@ -67,7 +72,22 @@ public String getTipo_usuario() {
 }
 public void setTipo_usuario(String tipo_usuario) {
 	this.tipo_usuario = tipo_usuario;
-} 
+}
+public String getContraseña() {
+	return contraseña;
+}
+public void setContraseña(String contraseña) {
+	this.contraseña = contraseña;
+}
+
+public String getUser() {
+	return user;
+}
+
+public void setUser(String user) {
+	this.user = user;
+}
+
 
 
 

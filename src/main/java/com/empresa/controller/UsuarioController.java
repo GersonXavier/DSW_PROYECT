@@ -30,7 +30,7 @@ public class UsuarioController {
 		return ResponseEntity.ok(ListarUsuario);
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("/buscar/{id}")
 	public ResponseEntity<Usuario> BuscarPorID(@PathVariable("id") int id_usuario)
 	{
 		Optional<Usuario> optional = usuarioRepositorio.findById(id_usuario);
