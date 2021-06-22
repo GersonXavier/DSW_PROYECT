@@ -6,4 +6,5 @@ import com.empresa.entity.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
+	public Usuario findByUserAndContraseña (String user, String contr);
 }
