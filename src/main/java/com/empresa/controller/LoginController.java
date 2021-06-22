@@ -19,8 +19,8 @@ public class LoginController {
 	@Autowired
 	public UsuarioRepository usuariorepositorio;
 	
-	@GetMapping("/buscar/{usuario}/{contraseña}")
-	public ResponseEntity<Usuario> BuscarPorID(@PathVariable("usuario") String user, @PathVariable("contraseña") String contraseña)
+	@GetMapping("/buscar/{nom}/{contr}")
+	public ResponseEntity<Usuario> BuscarPorID(@PathVariable("nom") String user, @PathVariable("contr") String contraseña)
 	{
 		Usuario usuario = usuariorepositorio.findByUserAndContraseña(user, contraseña);
         if(usuario != null) {
