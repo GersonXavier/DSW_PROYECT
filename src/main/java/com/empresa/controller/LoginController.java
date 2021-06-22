@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.empresa.entity.Usuario;
 import com.empresa.repository.UsuarioRepository;
+import com.empresa.util.hash.BCrypt;
 
 @RestController
 @RequestMapping("/login")
@@ -22,8 +23,9 @@ public class LoginController {
 	@GetMapping("/buscar/{nom}/{contr}")
 	public ResponseEntity<Usuario> BuscarPorID(@PathVariable("nom") String user, @PathVariable("contr") String contraseña)
 	{
-		Usuario usuario = usuariorepositorio.findByUserAndContraseña(user, contraseña);
-        if(usuario != null) {
+		
+		Usuario usuario = usuariorepositorio.findByUserAndContraseña(user,contraseña);
+        if(usuario != null ) {
         	
 			return ResponseEntity.ok(usuario);
 		}else
