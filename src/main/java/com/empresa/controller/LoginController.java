@@ -24,9 +24,10 @@ public class LoginController {
 	public ResponseEntity<Usuario> BuscarPorID(@PathVariable("nom") String user, @PathVariable("contr") String contraseña)
 	{
 		
-		Usuario usuario = usuariorepositorio.findByUserAndContraseña(user,contraseña);
-        if(usuario != null ) {
-        	
+		Usuario usuario = usuariorepositorio.findByUserOrContraseña(user,contraseña);
+		
+        if(BCrypt.checkpw(contraseña, usuario.getContraseña())) {
+        	System.out.print(usuario.getContraseña());
 			return ResponseEntity.ok(usuario);
 		}else
 			return ResponseEntity.noContent().build();
