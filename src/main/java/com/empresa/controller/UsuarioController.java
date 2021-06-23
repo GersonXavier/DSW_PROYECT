@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.empresa.entity.Celular;
 import com.empresa.entity.Usuario;
 import com.empresa.repository.UsuarioRepository;
 import com.empresa.util.hash.BCrypt;
@@ -30,6 +31,15 @@ public class UsuarioController {
 		List<Usuario> ListarUsuario = usuarioRepositorio.findAll();
 		return ResponseEntity.ok(ListarUsuario);
 	}
+	
+	@GetMapping("/buscarUsu/{usu}")
+	public ResponseEntity<List<Usuario>> ListarporUsuario(@PathVariable("usu") String usu){
+		List<Usuario> ListarUsuario = usuarioRepositorio.findByUserLike(usu+"%");
+		return ResponseEntity.ok(ListarUsuario);
+	}
+
+
+	
 	
 	@GetMapping("/buscar/{id}")
 	public ResponseEntity<Usuario> BuscarPorID(@PathVariable("id") int id_usuario)

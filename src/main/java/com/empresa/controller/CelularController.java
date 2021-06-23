@@ -29,6 +29,13 @@ public ResponseEntity<List<Celular>> ListaCelular(){
 	return ResponseEntity.ok(ListarCelular);
 }
 
+@GetMapping("/buscarNom/{nom}")
+public ResponseEntity<List<Celular>> ListarporNombre(@PathVariable("nom") String nom){
+	List<Celular> ListarCelular = celularRepositorio.findByNombreLike(nom+"%");
+	return ResponseEntity.ok(ListarCelular);
+}
+
+
 @GetMapping("/buscar/{id}")
 public ResponseEntity<Celular> BuscarPorID(@PathVariable("id") int id_celular)
 {

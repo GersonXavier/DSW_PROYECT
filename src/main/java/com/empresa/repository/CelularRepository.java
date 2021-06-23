@@ -14,5 +14,7 @@ import com.empresa.entity.Celular;
 public interface CelularRepository extends JpaRepository<Celular, Integer>{
 
 
-	public List<Celular> findByNombreLike( String filtro, Pageable pageable);
+	public List<Celular> findByNombreLike( String filtro);
+	
+	
 }
