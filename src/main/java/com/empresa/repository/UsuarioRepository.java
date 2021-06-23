@@ -11,6 +11,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
 	public Usuario findByUserAndContraseña (String user, String contr);
 
-	public List<Usuario> findByUsuarioLike( String filtro);
+
+	public List<Usuario> findByUserLike( String filtro);
 	
 }

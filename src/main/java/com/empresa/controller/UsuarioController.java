@@ -34,7 +34,7 @@ public class UsuarioController {
 	
 	@GetMapping("/buscarUsu/{usu}")
 	public ResponseEntity<List<Usuario>> ListarporUsuario(@PathVariable("usu") String usu){
-		List<Usuario> ListarUsuario = usuarioRepositorio.findByUsuarioLike(usu+"%");
+		List<Usuario> ListarUsuario = usuarioRepositorio.findByUserLike(usu+"%");
 		return ResponseEntity.ok(ListarUsuario);
 	}
 
