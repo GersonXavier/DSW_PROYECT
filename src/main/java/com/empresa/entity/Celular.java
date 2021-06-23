@@ -19,7 +19,7 @@ private int id_celular;
 @Column
 private String nombre;
 @Column  
-private String precio;
+private int precio;
 @ManyToOne
 @JoinColumn(name="cod_mar")
 private Marca marca;
@@ -38,10 +38,11 @@ public String getNombre() {
 public void setNombre(String nombre) {
 	this.nombre = nombre;
 }
-public String getPrecio() {
+
+public int getPrecio() {
 	return precio;
 }
-public void setPrecio(String precio) {
+public void setPrecio(int precio) {
 	this.precio = precio;
 }
 public Marca getMarca() {

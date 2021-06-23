@@ -19,9 +19,17 @@ public class Carrito {
 	@Column
 	private String producto;
 	@Column
-	private String cantidad;
+	private int cantidad;
 	@Column
-	private String preciototal;
+	private int preciototal;
+	
+	public void add(int precio) {
+		
+		this.preciototal+= precio;
+		this.cantidad++;
+	}
+	
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -34,18 +42,27 @@ public class Carrito {
 	public void setProducto(String producto) {
 		this.producto = producto;
 	}
-	public String getCantidad() {
+
+
+	public int getCantidad() {
 		return cantidad;
 	}
-	public void setCantidad(String cantidad) {
+
+
+	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-	public String getPreciototal() {
+
+
+	public int getPreciototal() {
 		return preciototal;
 	}
-	public void setPreciototal(String preciototal) {
+
+
+	public void setPreciototal(int preciototal) {
 		this.preciototal = preciototal;
 	}
+	
 	
 	
 	
