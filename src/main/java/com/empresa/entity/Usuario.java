@@ -28,7 +28,7 @@ private String num_usuario;
 @Column
 private String tipo_usuario;
 @Column
-private String contraseña;
+private String clave;
 
 public int getId_usuario() {
 	return id_usuario;
@@ -73,11 +73,14 @@ public String getTipo_usuario() {
 public void setTipo_usuario(String tipo_usuario) {
 	this.tipo_usuario = tipo_usuario;
 }
-public String getContraseña() {
-	return contraseña;
+
+
+public String getClave() {
+	return clave;
 }
-public void setContraseña(String contraseña) {
-	this.contraseña = contraseña;
+
+public void setClave(String clave) {
+	this.clave = clave;
 }
 
 public String getUser() {

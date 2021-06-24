@@ -21,13 +21,13 @@ public class LoginController {
 	public UsuarioRepository usuariorepositorio;
 	
 	@GetMapping("/buscar/{nom}/{contr}")
-	public ResponseEntity<Usuario> BuscarPorID(@PathVariable("nom") String user, @PathVariable("contr") String contraseña)
+	public ResponseEntity<Usuario> BuscarPorID(@PathVariable("nom") String user, @PathVariable("contr") String clave)
 	{
 		
-		Usuario usuario = usuariorepositorio.findByUserOrContraseña(user,contraseña);
+		Usuario usuario = usuariorepositorio.findByUserOrClave(user,clave);
 		
-        if(BCrypt.checkpw(contraseña, usuario.getContraseña())) {
-        	System.out.print(usuario.getContraseña());
+        if(BCrypt.checkpw(clave, usuario.getClave())) {
+        	System.out.print(usuario.getClave());
 			return ResponseEntity.ok(usuario);
 		}else
 			return ResponseEntity.noContent().build();

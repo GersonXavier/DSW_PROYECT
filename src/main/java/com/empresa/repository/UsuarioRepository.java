@@ -9,9 +9,9 @@ import com.empresa.entity.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-	public Usuario findByUserAndContraseña (String user, String contr);
+	public Usuario findByUserAndClave (String user, String contr);
 
-	public Usuario findByUserOrContraseña(String user, String contr);
+	public Usuario findByUserOrClave(String user, String contr);
 
 
 

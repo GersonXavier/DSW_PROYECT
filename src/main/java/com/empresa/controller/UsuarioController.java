@@ -55,7 +55,7 @@ public class UsuarioController {
     @PostMapping("/registrar")
     public ResponseEntity<Usuario> CrearUsuario(@RequestBody Usuario usuario)
     {
-    	usuario.setContraseña(BCrypt.hashpw(usuario.getContraseña(), BCrypt.gensalt()));
+    	usuario.setClave(BCrypt.hashpw(usuario.getClave(), BCrypt.gensalt()));
     
     	Usuario newUsuario = usuarioRepositorio.save(usuario);
     	return ResponseEntity.ok(newUsuario);
